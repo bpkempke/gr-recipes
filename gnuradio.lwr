@@ -50,9 +50,9 @@ source: git+https://github.com/gnuradio/gnuradio.git
 gitbranch: master
 gitargs: --recursive
 vars: # We explicitly enable some subcomponents to make sure the build fails if they're not working:
-  config_opt: " -DENABLE_DOXYGEN=$builddocs -DENABLE_VOLK=OFF"
+  config_opt: " -DENABLE_DOXYGEN=$builddocs"
 inherit: cmake
-configure_static: cmake .. -DCMAKE_BUILD_TYPE=$cmakebuildtype -DCMAKE_INSTALL_PREFIX=$prefix -DENABLE_STATIC_LIBS=True $config_opt
+configure_static: cmake .. -DENABLE_DEFAULT=OFF -DENABLE_VOLK=OFF -DCMAKE_BUILD_TYPE=$cmakebuildtype -DCMAKE_INSTALL_PREFIX=$prefix -DENABLE_STATIC_LIBS=True $config_opt
 install: |
     make install
     make install
